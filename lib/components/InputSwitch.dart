@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class InputSwitch extends StatefulWidget {
   final String titol;
+  final TextEditingController tecinput;
 
-  const InputSwitch({Key? key, required this.titol}) : super(key: key);
+  const InputSwitch({Key? key, required this.titol, required this.tecinput}) : super(key: key);
 
   @override
   _InputSwitchState createState() => _InputSwitchState();

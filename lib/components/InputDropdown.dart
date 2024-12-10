@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class InputDropdown extends StatefulWidget {
   final String titol;
+  final TextEditingController? tecinput;
 
-  const InputDropdown({Key? key, required this.titol}) : super(key: key);
+  const InputDropdown({Key? key, required this.titol, this.tecinput}) : super(key: key);
 
   @override
   _InputDropdownState createState() => _InputDropdownState();

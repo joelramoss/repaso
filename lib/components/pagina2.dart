@@ -3,17 +3,56 @@ import 'package:repaso/components/InputChecbox.dart';
 import 'package:repaso/components/InputDropdown.dart';
 import 'package:repaso/components/InputTextField.dart';
 import 'package:repaso/components/InputSwitch.dart';
-import 'package:repaso/components/InputRadio.dart';
-import 'package:repaso/components/Navegacio.dart'; // Importa tu AppBar personalizado
+import 'package:repaso/components/Navegacio.dart';
+import 'package:repaso/components/Pagina3.dart';
+import 'package:repaso/components/inputradio.dart'; // Importa tu AppBar personalizado
 
 class Pagina2 extends StatelessWidget {
+  void enviarDatos(
+    BuildContext context,
+    String nombre,
+    bool switchh,
+    String origen,
+    String destinacio,
+    String radiobutton,
+    String cbnegoci,
+    String cbvacances,
+  ) {
+    List listadatos = [
+      {"Input nom": nombre},
+      {"Switch": switchh},
+      {"Origen": origen},
+      {"Destinació": destinacio},
+      {"RadioButtons": radiobutton},
+      {"CBNegocis": cbnegoci},
+      {"CBVacances": cbvacances},
+    ];
+    // Navegar a Pagina2 pasando los datos
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Pagina3(
+          info: listadatos,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    TextEditingController tecnombre = TextEditingController();
+    TextEditingController tecswitchh = TextEditingController();
+    TextEditingController tecorigen = TextEditingController();
+    TextEditingController tecdestinacio = TextEditingController();
+    TextEditingController tecradiobutton = TextEditingController();
+    TextEditingController teccbnegoci = TextEditingController();
+    TextEditingController tecCBVacances = TextEditingController();
+
     return Scaffold(
       // Añadir AppBar aquí
       appBar: const Navegacio(
         title: "Detalls del Viatge", // Texto del título
-        backcolor:  Color.fromARGB(255, 0, 17, 255), // Color de fondo
+        backcolor: Color.fromARGB(255, 0, 17, 255), // Color de fondo
         colorText: Colors.white, // Color del texto y el icono
       ),
       backgroundColor: Colors.indigo[100],
@@ -33,40 +72,53 @@ class Pagina2 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Campo de texto: Passatger/a
-              const InputTextField(
+              InputTextField(
                 titol: "Passatger/a",
-                backinput: Color.fromARGB(255, 0, 17, 255),
+                backinput: const Color.fromARGB(255, 0, 17, 255),
                 colobackgroundYText: Colors.white,
+                tecinput: tecnombre,
               ),
               const SizedBox(height: 16),
 
               // Switch: Anada i tornada
-              const InputSwitch(titol: "Escull les característiques del viatge"),
-              
+              InputSwitch(titol: "Escull les característiques del viatge", tecinput: tecswitchh,),
               const SizedBox(height: 16),
 
               // Dropdowns: Origen y Destinació
-              const Row(
+               Row(
                 children: [
-                  Expanded(child: InputDropdown(titol: "Origen")),
+                  Expanded(child: InputDropdown(titol: "Origen",tecinput : tecorigen ),),
                   SizedBox(width: 16),
-                  Expanded(child: InputDropdown(titol: "Destinació")),
+                  Expanded(child: InputDropdown(titol: "Destinació", tecinput : tecdestinacio),),
                 ],
               ),
               const SizedBox(height: 16),
 
               // Radio buttons: Com vols navegar?
-              const InputRadio(titol: "Com vols navegar?"),
+               InputRadio(titol: "Com vols navegar?",tecinput: tecradiobutton,),
               const SizedBox(height: 16),
 
               // Checkbox: Quin tipus de viatge vols fer?
-              const InputCheckbox(titol: "Quin tipus de viatge vols fer?", options: ['Negocis', 'Vacances']),
+              InputCheckbox(
+                  titol: "Quin tipus de viatge vols fer?",
+                  isNegocis: teccbnegoci.text == 'Negocis',
+                  isVacances: teccbvacances.text == 'Vacances'
+                  ),
               const SizedBox(height: 16),
 
               // Botón de enviar
               Center(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Pagina3(
+                          info: [],
+                        ),
+                      ),
+                    );
+                  },
                   child: const Text("Enviar dades"),
                 ),
               ),

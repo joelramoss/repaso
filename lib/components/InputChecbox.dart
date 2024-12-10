@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 
 class InputCheckbox extends StatefulWidget {
   final String titol;
-  final List<String> options;
 
   const InputCheckbox({
     Key? key,
     required this.titol,
-    required this.options, // Lista de opciones para el checkbox
   }) : super(key: key);
 
   @override
@@ -15,14 +13,11 @@ class InputCheckbox extends StatefulWidget {
 }
 
 class _InputCheckboxState extends State<InputCheckbox> {
-  List<bool> _selectedOptions = [];
-
-  @override
-  void initState() {
-    super.initState();
-    // Inicializamos todos los checkboxes como no seleccionados
-    _selectedOptions = List<bool>.filled(widget.options.length, false);
-  }
+  // Lista de opciones
+  final List<String> _options = ['Negocis', 'Vacances'];
+  
+  // Lista para mantener el estado de los checkboxes
+  List<bool> _selectedOptions = [false, false];
 
   @override
   Widget build(BuildContext context) {
@@ -34,16 +29,15 @@ class _InputCheckboxState extends State<InputCheckbox> {
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 8),
-        // Usamos un Container con decoración para que se vea el fondo del cuadro
+        // Contenedor para el estilo de fondo
         Container(
           padding: const EdgeInsets.all(12.0),
           decoration: BoxDecoration(
-            color:
-                const Color.fromARGB(255, 0, 17, 255), // Fondo del contenedor
+            color: const Color.fromARGB(255, 0, 17, 255), // Fondo del contenedor
             borderRadius: BorderRadius.circular(8),
           ),
           child: Column(
-            children: widget.options.asMap().entries.map((entry) {
+            children: _options.asMap().entries.map((entry) {
               int index = entry.key;
               String option = entry.value;
               return Row(
@@ -52,17 +46,21 @@ class _InputCheckboxState extends State<InputCheckbox> {
                     value: _selectedOptions[index],
                     side: BorderSide(
                         color: Colors.white,
-                        width:
-                            2), // Color del borde (blanco cuando no está seleccionado)
-
+                        width: 2), // Color del borde (blanco cuando no está seleccionado)
                     onChanged: (bool? value) {
                       setState(() {
-                        _selectedOptions[index] = value!;
+                        // Aseguramos que solo una opción se seleccione
+                        if (index == 0) {
+                          _selectedOptions[0] = value!;
+                          _selectedOptions[1] = false; // Desmarcar Vacances si Negocis es seleccionado
+                        } else {
+                          _selectedOptions[1] = value!;
+                          _selectedOptions[0] = false; // Desmarcar Negocis si Vacances es seleccionado
+                        }
                       });
                     },
                   ),
                   const SizedBox(width: 8),
-                  // El texto de la opción
                   Text(
                     option,
                     style: const TextStyle(color: Colors.white),

@@ -4,12 +4,14 @@ class InputTextField extends StatelessWidget {
   final String titol;
   final Color backinput;
   final Color colobackgroundYText;
+  final TextEditingController tecinput;
 
   const InputTextField({
     Key? key,
     required this.titol,
     required this.backinput,
     required this.colobackgroundYText,
+    required this.tecinput,
   }) : super(key: key);
 
   @override
@@ -19,6 +21,7 @@ class InputTextField extends StatelessWidget {
       children: [
         Text(titol),
         TextField(
+          controller: tecinput,
           decoration: InputDecoration(
             border: const OutlineInputBorder(),
             hintText: 'Escriu el teu nom',
