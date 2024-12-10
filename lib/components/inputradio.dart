@@ -22,45 +22,58 @@ class _InputRadioState extends State<InputRadio> {
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 8),
-        Row(
-          children: [
-            Expanded(
-              child: RadioListTile<String>(
+        Container(
+          decoration: BoxDecoration(
+            color: Color.fromARGB(255, 0, 17, 255),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          
+          child: Column(  // Cambiado de Row a Column
+            children: [
+              RadioListTile<String>(
                 value: '1a classe',
                 groupValue: _selectedValue,
+                activeColor: Colors.white,
                 onChanged: (value) {
                   setState(() {
                     _selectedValue = value;
                   });
                 },
-                title: const Text('1a classe'),
+                title: const Text(
+                  '1a classe',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
-            ),
-            Expanded(
-              child: RadioListTile<String>(
+              RadioListTile<String>(
                 value: 'Business',
                 groupValue: _selectedValue,
+                activeColor: Colors.white,
                 onChanged: (value) {
                   setState(() {
                     _selectedValue = value;
                   });
                 },
-                title: const Text('Business'),
+                title: const Text(
+                  'Business',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
-            ),
-            Expanded(
-              child: RadioListTile<String>(
+              RadioListTile<String>(
                 value: 'Economy',
                 groupValue: _selectedValue,
+                activeColor: Colors.white,
                 onChanged: (value) {
                   setState(() {
                     _selectedValue = value;
                   });
                 },
-                title: const Text('Economy'),
+                title: const Text(
+                  'Economy',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );

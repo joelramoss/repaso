@@ -4,11 +4,18 @@ import 'package:repaso/components/InputDropdown.dart';
 import 'package:repaso/components/InputTextField.dart';
 import 'package:repaso/components/InputSwitch.dart';
 import 'package:repaso/components/InputRadio.dart';
+import 'package:repaso/components/Navegacio.dart'; // Importa tu AppBar personalizado
 
 class Pagina2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Añadir AppBar aquí
+      appBar: const Navegacio(
+        title: "Detalls del Viatge", // Texto del título
+        backcolor:  Color.fromARGB(255, 0, 17, 255), // Color de fondo
+        colorText: Colors.white, // Color del texto y el icono
+      ),
       backgroundColor: Colors.indigo[100],
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -53,7 +60,7 @@ class Pagina2 extends StatelessWidget {
               const SizedBox(height: 16),
 
               // Checkbox: Quin tipus de viatge vols fer?
-              const InputCheckbox(titol: "Quin tipus de viatge vols fer?",options: ['Negocis', 'Vacances'],),
+              const InputCheckbox(titol: "Quin tipus de viatge vols fer?", options: ['Negocis', 'Vacances']),
               const SizedBox(height: 16),
 
               // Botón de enviar

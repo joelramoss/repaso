@@ -38,7 +38,8 @@ class _InputCheckboxState extends State<InputCheckbox> {
         Container(
           padding: const EdgeInsets.all(12.0),
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 0, 17, 255), // Fondo del contenedor
+            color:
+                const Color.fromARGB(255, 0, 17, 255), // Fondo del contenedor
             borderRadius: BorderRadius.circular(8),
           ),
           child: Column(
@@ -49,6 +50,11 @@ class _InputCheckboxState extends State<InputCheckbox> {
                 children: [
                   Checkbox(
                     value: _selectedOptions[index],
+                    side: BorderSide(
+                        color: Colors.white,
+                        width:
+                            2), // Color del borde (blanco cuando no está seleccionado)
+
                     onChanged: (bool? value) {
                       setState(() {
                         _selectedOptions[index] = value!;
