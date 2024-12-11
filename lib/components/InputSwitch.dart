@@ -15,6 +15,13 @@ class _InputSwitchState extends State<InputSwitch> {
   bool isSwitched = false;
 
   @override
+  void initState() {
+    super.initState();
+    // Inicializar el valor del switch según el controlador
+    isSwitched = widget.tecinput.text == 'true';
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,20 +50,17 @@ class _InputSwitchState extends State<InputSwitch> {
                 onChanged: (value) {
                   setState(() {
                     isSwitched = value;
+                    // Actualizar el valor del controlador según el estado del Switch
+                    widget.tecinput.text = value.toString();
                   });
                 },
-                activeColor:
-                    Colors.tealAccent, // Color del Switch cuando está activado
-                inactiveThumbColor:
-                    Colors.white, // Color del Switch cuando está desactivado
-                inactiveTrackColor: Colors
-                    .transparent, // Fondo transparente cuando está desactivado
+                activeColor: Colors.tealAccent, // Color del Switch cuando está activado
+                inactiveThumbColor: Colors.white, // Color del Switch cuando está desactivado
+                inactiveTrackColor: Colors.transparent, // Fondo transparente cuando está desactivado
                 trackColor: MaterialStateProperty.all(isSwitched
-                    ? Colors.tealAccent
-                        .withOpacity(0.7) // Fondo tealAccent con menos opacidad
+                    ? Colors.tealAccent.withOpacity(0.7) // Fondo tealAccent con menos opacidad
                     : Colors.transparent),
               ),
-
               // El texto al lado del Switch
               Text(
                 "Anada i Tornada",

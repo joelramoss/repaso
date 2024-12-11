@@ -29,8 +29,7 @@ class _InputDropdownState extends State<InputDropdown> {
         Container(
           height: 50,
           decoration: BoxDecoration(
-            color:
-                const Color.fromARGB(255, 0, 17, 255), // Fondo del contenedor
+            color: const Color.fromARGB(255, 0, 17, 255), // Fondo del contenedor
             borderRadius: BorderRadius.circular(8),
           ),
           child: Row(
@@ -39,76 +38,51 @@ class _InputDropdownState extends State<InputDropdown> {
                 child: DropdownButtonFormField<String>(
                   decoration: const InputDecoration(
                     border: InputBorder.none,
-                    contentPadding: EdgeInsets.symmetric(
-                        horizontal: 12), // Agrega padding a los lados
+                    contentPadding: EdgeInsets.symmetric(horizontal: 12),
                   ),
                   dropdownColor: const Color.fromARGB(255, 0, 17, 255),
-                  // Color del menú desplegable
                   icon: const SizedBox.shrink(),
-
-                  style: const TextStyle(color: Colors.white, fontSize: 16),
+                  style: TextStyle(
+                    color : Colors.tealAccent,
+                    fontSize: 16,
+                  ),
                   value: selectedValue,
                   onChanged: (String? newValue) {
                     setState(() {
                       selectedValue = newValue;
+                      // Asignar el valor al controlador
+                      if (widget.tecinput != null) {
+                        widget.tecinput!.text = newValue ?? ''; // Actualiza el controlador
+                      }
                     });
                   },
                   hint: Container(
-                    alignment:
-                        Alignment.centerLeft, // Alinea el texto a la izquierda
+                    alignment: Alignment.centerLeft,
                     child: const Text(
                       'Selecciona una opció',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
-
                   items: const [
-                    DropdownMenuItem(
-                      value: 'Mercuri',
-                      child: Text('Mercuri'),
-                    ),
-                    DropdownMenuItem(
-                      value: 'Venus',
-                      child: Text('Venus'),
-                    ),
-                    DropdownMenuItem(
-                      value: 'Terra',
-                      child: Text('Terra'),
-                    ),
-                    DropdownMenuItem(
-                      value: 'Mart',
-                      child: Text('Mart'),
-                    ),
-                    DropdownMenuItem(
-                      value: 'Júpiter',
-                      child: Text('Júpiter'),
-                    ),
-                    DropdownMenuItem(
-                      value: 'Saturn',
-                      child: Text('Saturn'),
-                    ),
-                    DropdownMenuItem(
-                      value: 'Urà',
-                      child: Text('Urà'),
-                    ),
-                    DropdownMenuItem(
-                      value: 'Neptú',
-                      child: Text('Neptú'),
-                    ),
-                    DropdownMenuItem(
-                      value: 'Plutó',
-                      child: Text('Plutó'),
-                    ),
+                    DropdownMenuItem(value: 'Mercuri', child: Text('Mercuri')),
+                    DropdownMenuItem(value: 'Venus', child: Text('Venus')),
+                    DropdownMenuItem(value: 'Terra', child: Text('Terra')),
+                    DropdownMenuItem(value: 'Mart', child: Text('Mart')),
+                    DropdownMenuItem(value: 'Júpiter', child: Text('Júpiter')),
+                    DropdownMenuItem(value: 'Saturn', child: Text('Saturn')),
+                    DropdownMenuItem(value: 'Urà', child: Text('Urà')),
+                    DropdownMenuItem(value: 'Neptú', child: Text('Neptú')),
+                    DropdownMenuItem(value: 'Plutó', child: Text('Plutó')),
                   ],
                   borderRadius: BorderRadius.circular(15),
                   isExpanded: true,
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(right: 12),
+              Padding(
+                padding: const EdgeInsets.only(right: 12),
                 child: Icon(
                   Icons.location_on,
-                  color: Colors.white,
+                  color: selectedValue == null ? Colors.white : Colors.tealAccent,
                   size: 30,
                 ),
               ),
