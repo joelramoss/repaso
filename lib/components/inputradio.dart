@@ -44,46 +44,61 @@ class _InputRadioState extends State<InputRadio> {
               RadioListTile<String>(
                 value: '1a classe',
                 groupValue: _selectedValue,
-                activeColor: Colors.white,
+                activeColor: Colors.tealAccent,
                 onChanged: (value) {
                   setState(() {
                     _selectedValue = value;
-                    widget.tecinput?.text = value!; // Sincronizar con el controller
+                    widget.tecinput?.text =
+                        value!; // Sincronizar con el controller
                   });
                 },
-                title: const Text(
+                title: Text(
                   '1a classe',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(
+                    color: _selectedValue == '1a classe'
+                        ? Colors.tealAccent
+                        : Colors.white, // Operador ternario
+                  ),
                 ),
               ),
               RadioListTile<String>(
                 value: 'Business',
                 groupValue: _selectedValue,
-                activeColor: Colors.white,
+                activeColor: Colors.tealAccent,
                 onChanged: (value) {
                   setState(() {
                     _selectedValue = value;
-                    widget.tecinput?.text = value!; // Sincronizar con el controller
+                    widget.tecinput?.text =
+                        value!; // Sincronizar con el controller
                   });
                 },
-                title: const Text(
+                title: Text(
                   'Business',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(
+                    color: _selectedValue == 'Business'
+                        ? Colors.tealAccent
+                        : Colors.white, // Operador ternario
+                  ),
                 ),
               ),
               RadioListTile<String>(
                 value: 'Economy',
                 groupValue: _selectedValue,
-                activeColor: Colors.white,
+                activeColor: Colors.tealAccent,
                 onChanged: (value) {
                   setState(() {
                     _selectedValue = value;
-                    widget.tecinput?.text = value!; // Sincronizar con el controller
+                    widget.tecinput?.text =
+                        value!; // Sincronizar con el controller
                   });
                 },
-                title: const Text(
+                title: Text(
                   'Economy',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(
+                    color: _selectedValue == 'Economy'
+                        ? Colors.tealAccent
+                        : Colors.white, // Operador ternario
+                  ),
                 ),
               ),
             ],

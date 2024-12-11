@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 
 class InputCheckbox extends StatefulWidget {
   final String titol;
+  final TextEditingController tecNegocis;
+  final TextEditingController tecVacances;
 
   const InputCheckbox({
     Key? key,
     required this.titol,
+    required this.tecNegocis,
+    required this.tecVacances,
   }) : super(key: key);
 
   @override
@@ -13,11 +17,8 @@ class InputCheckbox extends StatefulWidget {
 }
 
 class _InputCheckboxState extends State<InputCheckbox> {
-  // Lista de opciones
-  final List<String> _options = ['Negocis', 'Vacances'];
-  
-  // Lista para mantener el estado de los checkboxes
-  List<bool> _selectedOptions = [false, false];
+  bool _isNegocisSelected = false;
+  bool _isVacancesSelected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -29,45 +30,65 @@ class _InputCheckboxState extends State<InputCheckbox> {
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 8),
-        // Contenedor para el estilo de fondo
         Container(
           padding: const EdgeInsets.all(12.0),
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 0, 17, 255), // Fondo del contenedor
+            color: const Color.fromARGB(255, 0, 17, 255),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Column(
-            children: _options.asMap().entries.map((entry) {
-              int index = entry.key;
-              String option = entry.value;
-              return Row(
+            children: [
+              // Checkbox Negocis
+              Row(
                 children: [
                   Checkbox(
-                    value: _selectedOptions[index],
-                    side: BorderSide(
-                        color: Colors.white,
-                        width: 2), // Color del borde (blanco cuando no está seleccionado)
+                    value: _isNegocisSelected,
                     onChanged: (bool? value) {
                       setState(() {
-                        // Aseguramos que solo una opción se seleccione
-                        if (index == 0) {
-                          _selectedOptions[0] = value!;
-                          _selectedOptions[1] = false; // Desmarcar Vacances si Negocis es seleccionado
-                        } else {
-                          _selectedOptions[1] = value!;
-                          _selectedOptions[0] = false; // Desmarcar Negocis si Vacances es seleccionado
-                        }
+                        _isNegocisSelected = value!;
+
+                        // Actualiza el controlador
+                        widget.tecNegocis.text = _isNegocisSelected.toString();
                       });
                     },
+                    activeColor: Colors.tealAccent, // Color cuando está activado
+                    checkColor: Colors.white, // Color de la marca de verificación
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    option,
-                    style: const TextStyle(color: Colors.white),
+                    'Negocis',
+                    style: TextStyle(
+                      color: _isNegocisSelected ? Colors.tealAccent : Colors.white, // Cambia el color del texto
+                    ),
                   ),
                 ],
-              );
-            }).toList(),
+              ),
+              // Checkbox Vacances
+              Row(
+                children: [
+                  Checkbox(
+                    value: _isVacancesSelected,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        _isVacancesSelected = value!;
+
+                        // Actualiza el controlador
+                        widget.tecVacances.text = _isVacancesSelected.toString();
+                      });
+                    },
+                    activeColor: Colors.tealAccent, // Color cuando está activado
+                    checkColor: Colors.white, // Color de la marca de verificación
+                  ),
+                  const SizedBox(width: 8),
+                  Text(
+                    'Vacances',
+                    style: TextStyle(
+                      color: _isVacancesSelected ? Colors.tealAccent : Colors.white, // Cambia el color del texto
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ],

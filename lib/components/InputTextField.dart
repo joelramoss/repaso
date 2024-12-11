@@ -19,15 +19,20 @@ class InputTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(titol),
+        Text(
+          titol,
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
         TextField(
           controller: tecinput,
           decoration: InputDecoration(
-            border: const OutlineInputBorder(),
-            hintText: 'Escriu el teu nom',
+            hintText: 'Escriu el teu nom...',
             hintStyle: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
+              color: Colors.white, // Color blanco
+              fontWeight: FontWeight.bold, // Negrita
+              fontStyle: FontStyle.italic, // Cursiva
+              fontSize: 18,
+              letterSpacing: 1.5, // Tamaño del texto
             ),
             fillColor: backinput,
             filled: true,

@@ -4,7 +4,8 @@ class InputSwitch extends StatefulWidget {
   final String titol;
   final TextEditingController tecinput;
 
-  const InputSwitch({Key? key, required this.titol, required this.tecinput}) : super(key: key);
+  const InputSwitch({Key? key, required this.titol, required this.tecinput})
+      : super(key: key);
 
   @override
   _InputSwitchState createState() => _InputSwitchState();
@@ -44,12 +45,25 @@ class _InputSwitchState extends State<InputSwitch> {
                     isSwitched = value;
                   });
                 },
+                activeColor:
+                    Colors.tealAccent, // Color del Switch cuando está activado
+                inactiveThumbColor:
+                    Colors.white, // Color del Switch cuando está desactivado
+                inactiveTrackColor: Colors
+                    .transparent, // Fondo transparente cuando está desactivado
+                trackColor: MaterialStateProperty.all(isSwitched
+                    ? Colors.tealAccent
+                        .withOpacity(0.7) // Fondo tealAccent con menos opacidad
+                    : Colors.transparent),
               ),
+
               // El texto al lado del Switch
-              const Text(
+              Text(
                 "Anada i Tornada",
                 style: TextStyle(
-                  color: Colors.white, // Color del texto
+                  color: isSwitched
+                      ? Colors.tealAccent
+                      : Colors.white, // Cambia el color del texto
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
