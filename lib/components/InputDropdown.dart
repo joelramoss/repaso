@@ -4,7 +4,8 @@ class InputDropdown extends StatefulWidget {
   final String titol;
   final TextEditingController? tecinput;
 
-  const InputDropdown({Key? key, required this.titol, this.tecinput}) : super(key: key);
+  const InputDropdown({Key? key, required this.titol, this.tecinput})
+      : super(key: key);
 
   @override
   _InputDropdownState createState() => _InputDropdownState();
@@ -29,7 +30,8 @@ class _InputDropdownState extends State<InputDropdown> {
         Container(
           height: 50,
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 0, 17, 255), // Fondo del contenedor
+            color:Colors.indigo,
+
             borderRadius: BorderRadius.circular(8),
           ),
           child: Row(
@@ -40,20 +42,19 @@ class _InputDropdownState extends State<InputDropdown> {
                     border: InputBorder.none,
                     contentPadding: EdgeInsets.symmetric(horizontal: 12),
                   ),
-                  dropdownColor: const Color.fromARGB(255, 0, 17, 255),
+                  dropdownColor: Colors.indigo,
                   icon: const SizedBox.shrink(),
                   style: TextStyle(
-                    color : Colors.tealAccent,
+                    color: Colors.tealAccent,
                     fontSize: 16,
                   ),
                   value: selectedValue,
                   onChanged: (String? newValue) {
                     setState(() {
                       selectedValue = newValue;
-                      // Asignar el valor al controlador
-                      if (widget.tecinput != null) {
-                        widget.tecinput!.text = newValue ?? ''; // Actualiza el controlador
-                      }
+                      // Asignar el valor al controlador, solo si no es nulo
+                      widget.tecinput?.text = newValue ??
+                          ''; // Si el controlador es nulo, no hace nada
                     });
                   },
                   hint: Container(
@@ -82,7 +83,8 @@ class _InputDropdownState extends State<InputDropdown> {
                 padding: const EdgeInsets.only(right: 12),
                 child: Icon(
                   Icons.location_on,
-                  color: selectedValue == null ? Colors.white : Colors.tealAccent,
+                  color:
+                      selectedValue == null ? Colors.white : Colors.tealAccent,
                   size: 30,
                 ),
               ),

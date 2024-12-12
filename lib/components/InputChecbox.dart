@@ -33,7 +33,7 @@ class _InputCheckboxState extends State<InputCheckbox> {
         Container(
           padding: const EdgeInsets.all(12.0),
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 0, 17, 255),
+            color: Colors.indigo,
             borderRadius: BorderRadius.circular(8),
           ),
           child: Column(
@@ -51,6 +51,7 @@ class _InputCheckboxState extends State<InputCheckbox> {
                         widget.tecNegocis.text = _isNegocisSelected.toString();
                       });
                     },
+                    side: BorderSide(color: Colors.white, width: 2),
                     activeColor: Colors.tealAccent, // Color cuando está activado
                     checkColor: Colors.white, // Color de la marca de verificación
                   ),
@@ -76,6 +77,7 @@ class _InputCheckboxState extends State<InputCheckbox> {
                         widget.tecVacances.text = _isVacancesSelected.toString();
                       });
                     },
+                    side: BorderSide(color: Colors.white, width: 2),
                     activeColor: Colors.tealAccent, // Color cuando está activado
                     checkColor: Colors.white, // Color de la marca de verificación
                   ),

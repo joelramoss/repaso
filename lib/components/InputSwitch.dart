@@ -39,7 +39,7 @@ class _InputSwitchState extends State<InputSwitch> {
           padding: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
-            color: const Color.fromARGB(255, 0, 17, 255),
+            color: Colors.indigo,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -54,12 +54,10 @@ class _InputSwitchState extends State<InputSwitch> {
                     widget.tecinput.text = value.toString();
                   });
                 },
-                activeColor: Colors.tealAccent, // Color del Switch cuando está activado
-                inactiveThumbColor: Colors.white, // Color del Switch cuando está desactivado
-                inactiveTrackColor: Colors.transparent, // Fondo transparente cuando está desactivado
-                trackColor: MaterialStateProperty.all(isSwitched
-                    ? Colors.tealAccent.withOpacity(0.7) // Fondo tealAccent con menos opacidad
-                    : Colors.transparent),
+                activeColor: Colors.tealAccent,
+                  inactiveThumbColor: Colors.white,
+                  inactiveTrackColor: Colors.transparent,
+                  trackOutlineColor: isSwitched? const WidgetStatePropertyAll(Colors.tealAccent) : const WidgetStatePropertyAll(Colors.white),
               ),
               // El texto al lado del Switch
               Text(

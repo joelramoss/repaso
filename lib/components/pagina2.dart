@@ -47,9 +47,9 @@ class Pagina2 extends StatelessWidget {
     TextEditingController tecCBVacances = TextEditingController();
 
     return Scaffold(
-      appBar: const Navegacio(
+      appBar:  Navegacio(
         title: "Detalls del Viatge",
-        backcolor: Color.fromARGB(255, 0, 17, 255),
+        backcolor: Colors.indigo,
         colorText: Colors.tealAccent,
       ),
       backgroundColor: Colors.indigo[200],
@@ -61,7 +61,7 @@ class Pagina2 extends StatelessWidget {
             color:  Colors.tealAccent,
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: const Color.fromARGB(255, 0, 17, 255),
+              color:  Colors.indigo,
               width: 1.5,
             ),
           ),
@@ -70,7 +70,7 @@ class Pagina2 extends StatelessWidget {
             children: [
               InputTextField(
                 titol: "Passatger/a",
-                backinput: const Color.fromARGB(255, 0, 17, 255),
+                backinput: Colors.indigo,
                 colobackgroundYText: Colors.tealAccent,
                 tecinput: tecnombre,
               ),

@@ -20,91 +20,81 @@ class _InputRadioState extends State<InputRadio> {
   @override
   void initState() {
     super.initState();
-    // Inicializar el valor seleccionado con el texto actual del controller
     _selectedValue = widget.tecinput?.text;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          widget.titol,
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+    return Theme(
+      data: Theme.of(context).copyWith(
+        radioTheme: RadioThemeData(
+          fillColor: MaterialStateProperty.all(Colors.white),
+          overlayColor: MaterialStateProperty.all(Colors.transparent),
+          visualDensity: VisualDensity.compact,
         ),
-        const SizedBox(height: 8),
-        Container(
-          decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 0, 17, 255),
-            borderRadius: BorderRadius.circular(8),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            widget.titol,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
-          child: Column(
-            children: [
-              RadioListTile<String>(
-                value: '1a classe',
-                groupValue: _selectedValue,
-                activeColor: Colors.tealAccent,
-                onChanged: (value) {
-                  setState(() {
-                    _selectedValue = value;
-                    widget.tecinput?.text =
-                        value!; // Sincronizar con el controller
-                  });
-                },
-                title: Text(
-                  '1a classe',
-                  style: TextStyle(
-                    color: _selectedValue == '1a classe'
-                        ? Colors.tealAccent
-                        : Colors.white, // Operador ternario
+          const SizedBox(height: 8),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.indigo,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Column(
+              children: [
+                RadioListTile<String>(
+                  value: '1a classe',
+                  groupValue: _selectedValue,
+                  onChanged: (value) {
+                    setState(() {
+                      _selectedValue = value;
+                      widget.tecinput?.text = value!;
+                    });
+                  },
+                  title: const Text(
+                    '1a classe',
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
-              ),
-              RadioListTile<String>(
-                value: 'Business',
-                groupValue: _selectedValue,
-                activeColor: Colors.tealAccent,
-                onChanged: (value) {
-                  setState(() {
-                    _selectedValue = value;
-                    widget.tecinput?.text =
-                        value!; // Sincronizar con el controller
-                  });
-                },
-                title: Text(
-                  'Business',
-                  style: TextStyle(
-                    color: _selectedValue == 'Business'
-                        ? Colors.tealAccent
-                        : Colors.white, // Operador ternario
+                RadioListTile<String>(
+                  value: 'Business',
+                  groupValue: _selectedValue,
+                  onChanged: (value) {
+                    setState(() {
+                      _selectedValue = value;
+                      widget.tecinput?.text = value!;
+                    });
+                  },
+                  title: const Text(
+                    'Business',
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
-              ),
-              RadioListTile<String>(
-                value: 'Economy',
-                groupValue: _selectedValue,
-                activeColor: Colors.tealAccent,
-                onChanged: (value) {
-                  setState(() {
-                    _selectedValue = value;
-                    widget.tecinput?.text =
-                        value!; // Sincronizar con el controller
-                  });
-                },
-                title: Text(
-                  'Economy',
-                  style: TextStyle(
-                    color: _selectedValue == 'Economy'
-                        ? Colors.tealAccent
-                        : Colors.white, // Operador ternario
+                RadioListTile<String>(
+                  value: 'Economy',
+                  groupValue: _selectedValue,
+                  onChanged: (value) {
+                    setState(() {
+                      _selectedValue = value;
+                      widget.tecinput?.text = value!;
+                    });
+                  },
+                  title: const Text(
+                    'Economy',
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
